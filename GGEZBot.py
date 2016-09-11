@@ -8,7 +8,7 @@ USERNAME = "gg_ez_bot"
 PASSWORD = "***" # No password for you :(
 USERAGENT = "GG EZ v1.0.0 (by /u/ChaosTheDude)"
 
-FOOTER = "\n\n---\n^[GitHub](https://github.com/ChaosTheDude/GG-EZ-Bot) ^| ^/u/ChaosTheDude"
+FOOTER = "\n\n---\n^I ^am ^a ^bot ^made ^by ^/u/ChaosTheDude. ^Beep ^boop. ^| ^[GitHub](https://github.com/ChaosTheDude/GG-EZ-Bot)"
 
 r = praw.Reddit(USERAGENT)
 r.login(USERNAME, PASSWORD)
@@ -25,7 +25,10 @@ responses = ['Well played. I salute you all.',
              'Good game! Best of luck to you all!',
              'I\'m trying to be a nicer person. It\'s hard, but I am trying, guys.',
              'Mommy says people my age shouldn\'t suck their thumbs.',
-             'Well played. I salute you all.']
+             'Well played. I salute you all.',
+             'C\'mon, Mom! One more game before you tuck me in. Oops mistell.',
+             'Great game, everyone!',
+             'It was an honor to play with you all. Thank you.']
 
 
 def process_comment(c):
