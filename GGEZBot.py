@@ -1,21 +1,20 @@
 import praw
 import traceback
 import random
-from collections import deque
+import re
+import pickle
 from praw.helpers import comment_stream
 
-USERNAME = "gg_ez_bot"
-PASSWORD = "***" # No password for you :(
-USERAGENT = "GG EZ v1.0.0 (by /u/ChaosTheDude)"
-
-FOOTER = "\n\n---\n^I ^am ^a ^bot ^made ^by ^/u/ChaosTheDude. ^Beep ^boop. ^| ^[GitHub](https://github.com/ChaosTheDude/GG-EZ-Bot)"
+USERNAME = input('Username: ')
+PASSWORD = input('Password: ')
+USERAGENT = "GG EZ v1.1.0 (by /u/ChaosTheDude)"
 
 r = praw.Reddit(USERAGENT)
 r.login(USERNAME, PASSWORD)
 
-cache = deque(maxlen=200)
+FOOTER = "\n\n---\n^I ^am ^a ^bot ^made ^by ^/u/ChaosTheDude. ^Beep ^boop. ^| ^[GitHub](https://github.com/ChaosTheDude/GG-EZ-Bot)"
 
-responses = ['Well played. I salute you all.',
+RESPONSES = ['Well played. I salute you all.',
              'For glory and honor! Huzzah comrades!',
              'I\'m wrestling with some insecurity issues in my life but thank you all for playing with me.',
              'It\'s past my bedtime. Please don\'t tell my mommy.',
@@ -30,28 +29,37 @@ responses = ['Well played. I salute you all.',
              'Great game, everyone!',
              'It was an honor to play with you all. Thank you.']
 
+processed = set()
+
+save_file = "save.p"
+
+try:
+    with open(save_file, 'rb') as handle:
+        processed = pickle.load(handle)
+except EOFError:
+    print("Empty save file.")
+
 
 def process_comment(c):
     text = c.body.lower()
-    if "gg ez" in text:
-        print(comment.body)
-        response = random.choice(responses)
+    if re.search(r'\b(gg\s*ez)\b', text):
+        print(c.body)
+        response = random.choice(RESPONSES)
         print("\n" + response + "\n---\n")
         c.reply(response + FOOTER)
 
 
-running = True
-while running:
-    for comment in comment_stream(r, 'overwatch'):
-        if comment.id in cache:
-            break
+def dump_ids():
+    with open(save_file, 'wb') as handle:
+        pickle.dump(processed, handle)
 
-        cache.append(comment.id)
-        replied = False
 
-        try:
-            process_comment(comment)
-        except KeyboardInterrupt:
-            running = False
-        except:
-            traceback.print_exc()
+while True:
+    try:
+        for comment in comment_stream(r, 'overwatch'):
+            if comment.id not in processed:
+                processed.add(comment.id)
+                process_comment(comment)
+                dump_ids()
+    except:
+        traceback.print_exc()
