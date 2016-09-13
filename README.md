@@ -3,7 +3,7 @@
 A super annoying, super useless Reddit bot.
 
 ### Usage
-The bot wil find any [/r/Overwatch](http://reddit.com/r/Overwatch) comment containing "gg ez" or some variation of it and respond with one of Overwatch's in-game filters.  Whitespace, capitalization, and punctuation are not taken into account when processing; only word boundaries are taken into account.
+The bot will find any [/r/Overwatch](http://reddit.com/r/Overwatch) comment containing "gg ez" or some variation of it and respond with one of Overwatch's in-game filters.  Whitespace, capitalization, and punctuation are not taken into account when processing; only word boundaries are taken into account.
 
 | Example                     | Response      |
 | --------------------------- | ------------- |
