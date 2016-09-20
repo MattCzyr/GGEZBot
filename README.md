@@ -2,6 +2,9 @@
 
 A super annoying, super useless Reddit bot.
 
+### Status
+The bot has been banned from [/r/Overwatch](http://reddit.com/r/Overwatch) as of 9/18/2016.
+
 ### Usage
 The bot will find any [/r/Overwatch](http://reddit.com/r/Overwatch) comment containing "gg ez" or some variation of it and respond with one of Overwatch's in-game filters.  Whitespace, capitalization, and punctuation are not taken into account when processing; only word boundaries are taken into account.
 
