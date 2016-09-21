@@ -21,7 +21,7 @@ RESPONSES = ['Ah shucks... you guys are the best!',
              'Good game! Best of luck to you all!',
              'Great game, everyone!',
              'I feel very, very small... please hold me...',
-             'It was an honor to play with you all. Thank you.'
+             'It was an honor to play with you all. Thank you.',
              'It\'s past my bedtime. Please don\'t tell my mommy.',
              'I\'m trying to be a nicer person. It\'s hard, but I am trying, guys.',
              'I\'m wrestling with some insecurity issues in my life but thank you all for playing with me.',
